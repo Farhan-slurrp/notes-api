@@ -41,6 +41,12 @@ func main() {
 
 	notesMiddleware(app)
 
-	app.Listen(":4000")
+	port, ok := os.LookupEnv("PORT")
+
+    	if ok == false {
+        	port = "3000"
+    	}
+
+	app.Listen(":"+port)
 	fmt.Println("Listening on port 4000🚀")
 }
